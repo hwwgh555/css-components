@@ -4,7 +4,6 @@
 最终目的是做到：1.能够随拿随用（复制粘贴），省去重复写常用样式的麻烦；2.稍微修改既能够获得索取样式
 
 #Button
-<pre>
 <style>
    .btn-default{
                 display: inline-block;
@@ -76,5 +75,5 @@
             }
             /*以上三个伪类:完全模拟了button点击的一般效果，所以任何元素只要加上该类就能形成类似button的样式*/
 </style>            
-</pre>
+
 你好呀 <button class="btn-default">我是按钮</button><a class="lib_button">我是a标签按钮</a>
