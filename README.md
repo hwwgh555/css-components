@@ -74,6 +74,32 @@
                 border-color: #8c8c8c;
             }
             /*以上三个伪类:完全模拟了button点击的一般效果，所以任何元素只要加上该类就能形成类似button的样式*/
-```    
-
-
+```   
+#input
+```css
+input{
+  padding: 2px 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  /*使用border-radius:3px;如果不加则会导致input凹陷*/
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+input:focus{
+  border-color: #66afe9;
+  //去除浏览默认获得焦点时出现的边框（谷歌为蓝色边框，ie为虚线）
+  outline: 0;
+  //这个box-shadow瞬间让input变大高大上
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+```
