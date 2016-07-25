@@ -96,9 +96,9 @@ input{
 }
 input:focus{
   border-color: #66afe9;
-  //去除浏览默认获得焦点时出现的边框（谷歌为蓝色边框，ie为虚线）
+  /*去除浏览默认获得焦点时出现的边框（谷歌为蓝色边框，ie为虚线）*/
   outline: 0;
-  //这个box-shadow瞬间让input变大高大上
+  /*这个box-shadow瞬间让input变大高大上*/
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
 }
