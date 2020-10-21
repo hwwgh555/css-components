@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>position:fixed;</title>
+        <link rel="styleshell" href='../reset.css' />
+        <style>
+            .wrapper {
+                position: relative;
+                top: 50px;
+                left: 50px;
+                height: 500px;
+                background-color: blue;
+                /* transform: translate(0, 0); */ /* 存在transform时，fixed的元素会相对于position的元素，否则相对于视口 */
+            }
+
+            .fixed {
+                position: fixed;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: maroon;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="fixed"></div>
+        </div>
+    </body>
+</html>
