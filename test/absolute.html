@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>absolute溢出div的范围时，出现不显示现象</title>
+    <link rel="styleshell" href='../reset.css' />
+    <style>
+        .wrapper1 {
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            overflow: auto; /* 定位到是该属性造成的 我的理解 absolute 总是无法使overflow化，因些此时overflow的值相当于hidden */
+            background-color: blue;
+            background-clip: padding-box;
+            border: 0;
+        }
+
+        .wrapper2 {
+            position: relative;
+            padding: 16px 24px;
+            color: #15192A;
+            background: yellow;
+            border-bottom: 1px solid #f0f0f0;
+            border-radius: 0px 0px 0 0;
+        }
+
+        .icon {
+            position: absolute;
+            top: 0px;
+            left: -20px;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="wrapper1">
+            <div class="wrapper2">
+                <span class="icon">x</span>span的x的左部分没有显示出来
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
