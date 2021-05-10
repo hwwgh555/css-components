@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='./reset.css' rel="stylesheet">
+  <title>左侧折叠</title>
+  <style>
+    html,body{
+      height: 100%;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+    .switchButton{
+      width: 80px;
+      height: 40px;
+      display: inline-block; /* 不写的话 span 不会在浏览器中显示*/
+      position: relative;
+      /* border: 1px solid #888; */
+      background-color: #BDC3D1;
+      border-radius: 40px;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    .switchButton::after{
+      content: '';
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: block; /*必须是 block 或是 inline-block，否则不显示，哪个更好呢？*/
+      position: absolute;
+      left: 1px; /*  left属性，就没有动画效果--- 为什么？*/
+      box-shadow: 0 1px 3px #666666; /* 立体效果，大增 ！！*/
+      transition: all 0.2s ease-in-out;
+    }
+    .switchButton.active::after{
+      left: 39px;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      const $switch = document.querySelector('#switch')
+      const $button = document.querySelector('#button')
+      $button.addEventListener('click', () => {
+        console.log(this)
+        const curClassname = $switch.getAttribute('class')
+        if (curClassname.includes('active')) {
+          $switch.setAttribute('class', 'switchButton')
+        } else {
+          $switch.setAttribute('class', 'switchButton active')
+        }
+      })
+    }
+  </script>
+</head>
+<body>
+  <!--关键点：1.span的::after巧用 2.动画效果的关键 2.1 transition 2.2 left属性的前后对比 -->
+  <span id="switch" class="switchButton" id="switch"></span>
+  <span id="button">开关</span>
+  <div class="wrapper">
+      <div class="left"></div>
+      <div class="right"></div>
+  <div>
+</body>
+</html>
