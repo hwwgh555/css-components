@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>头部</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            .wrapper {
+                display: flex;
+                align-items: stretch; /* 默认值为 stretch */
+                border: 1px solid red;
+                height: 500px;
+                background: red;
+                overflow: auto;
+            }
+            .left {
+                border: 1px solid green;
+                background: green;
+                width: 200px;
+                height: 700px;
+                /* left高度(700px)大于wapper高度(500px)时
+                    1. right的高度最大值 500px，并没有变成left的高度
+                    2. 父级添加overflow: auto后，left的最大高度依然为500px;
+                    结论： align-items: stretch;下flex-item元素的最大高度为容器的最大高度，与临近的同级元素无关
+                    
+                    需求：左侧left与右侧right高度始终一致，则需要wrapper的高度必须与最高的子元素的高度一致
+                */
+            }
+            .right {
+                flex-grow: 1;
+                border: 1px solid yellow;
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <diiv class="left">left</diiv>
+            <diiv class="right">right</diiv>
+        </div>
+    </body>
+</html>
