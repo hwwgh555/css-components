@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input type="radio"可选</title>
+    <link rel="stylesheet" href='../reset.css' />
+    <style>
+        /* 
+            box-sizing: border-box; 是否设置结果不同
+                设置时：box的height = 外层box-wrapper内容区高度（500 - 1 * 2） = 自身border + padding + 内容区; // 即不会溢出
+                不设置时：box的height = 外层box-wrapper内容区高度（500） // 加上自身的padding，相关值，会致使当前box高度超出box-wrapper高度
+                相同点：子元素设置height百分比值时，参考的总是父级内容区的高度
+         */
+        .box-wrapper {
+            border: 1px solid red;
+            height: 500px;
+        }
+        .box {
+            border: 10px solid green;
+            height: 100%;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box-wrapper'>
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>
