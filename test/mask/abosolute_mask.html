@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='../reset.css' />
+    <link rel="stylesheet" href='./mask.css' />
+    <title>absolute mask</title>
+</head>
+<body>
+    <!--
+        .mask
+        以上代码，并不总会导致整个页面被充满，
+            如页面存在滚动条时，向下滚动时，可以发现只有首屏有背景色效果
+     -->
+     <div class="mask">
+        absolute mask
+     </div>
+     <script>
+        console.log('offsetHeight::', document.querySelector('.mask').offsetHeight)
+    </script>
+</body>
+</html>
