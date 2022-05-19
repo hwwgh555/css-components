@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='../../reset.css' />
+    <title>scroll mask</title>
+    <style>
+        .scroll_container {
+            height: 500px;
+            border: 1px solid red;
+            overflow: auto;
+            width: 400px;
+            transform: translate(0, 0);
+        }
+        .scroll_content_container {
+            border: 1px solid green;
+            position: relative;
+            height: 800px;
+            width: 500px;
+        }
+        #btn1 {
+            position: absolute;
+            top: 0;
+        }
+        #btn2 {
+            position: absolute;
+            bottom: 0;
+        }
+        .mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: antiquewhite;
+        }
+        /*
+            .mash 并不会充满scroll_container，高度与宽度都没充满；
+            可以看出 top，right这些值都是相对于容器的可见区域的;
+            此时 positoion: fixed；效果与position: absolute;也是相同的
+
+            总结：
+                position: absolute; top/bottom/left/right，
+                    是相对于可见视口（左上角为参考点的直接可视区域）;
+                position: fixed;
+                    默认情况下，由于会跟随容器移动，导致看起来是覆盖整个区域的（通过查看mask大小可以看出，并没有与实际区域大小一致）；
+                    以其它容器为参考时（元素设置了filter， transform，或perspective时，见mdn），此时表现则与absolute相同；
+
+
+
+            https://zhuanlan.zhihu.com/p/95021620 transform与position:fixed的那些恩怨
+            -- 没看明白什么意思 TODO: --
+        */
+    </style>
+</head>
+<body>
+     <div class="scroll_container">
+        <div class="scroll_content_container">
+            <button id="btn1">提交1</button>
+            <button id="btn2">提交2</button>
+        </div>
+        <div class="mask">mask</div>
+     </div>
+</body>
+</html>
