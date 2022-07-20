@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>flex-grow:1; 的元素项，如果元素很多，是否会称撑满溢出呢？</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* 设置flex-direction: column; wrapper并不会纵向充满整个纵向区域*/
+            border: 1px solid red;
+            width: 300px;
+            background: red;
+        }
+
+        .left {
+            border: 1px solid green;
+            background: green;
+            flex-grow: 1;
+            overflow: auto; /* 阻止内部过多元素时，将整个wrapper的滚动条撑出 */
+        }
+        .left-title{
+            background-color: bisque;
+            height: 100px;
+        }
+        .item {
+            background-color:aquamarine;
+            height: 300px;
+        }
+
+        .right {
+            min-height: 200px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 可以看出
+        1. wrapper, height: 100%;
+        2. .left { flex-grow: 1};
+    -->
+    <div class="wrapper">
+        <div class="left">
+            <div class="left-title">标题</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+        </div>
+        <diiv class="right">right</diiv>
+    </div>
+</body>
+
+</html>
