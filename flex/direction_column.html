@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>头部</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column; /* 设置flex-direction: column; wrapper并不会纵向充满整个纵向区域*/
+            border: 1px solid red;
+            width: 300px;
+            background: red;
+        }
+
+        .left {
+            border: 1px solid green;
+            background: green;
+            flex-grow: 1;
+        }
+
+        .right {
+            min-height: 200px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <diiv class="left">left</diiv>
+        <diiv class="right">right</diiv>
+    </div>
+</body>
+
+</html>
