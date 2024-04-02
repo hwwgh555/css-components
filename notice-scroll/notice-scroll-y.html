@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />            
+        <meta name="keywords" content="关键字1,关键字2" />        
+        <meta name="Description" content="描述信息" />
+        <title>通知：纵向-循环滚动</title>
+        <!--CSS/JS-->
+        <style type="text/css">
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul,li{
+                list-style:none;
+                display:block;
+            }
+            #scrollBox{
+                height:150px;
+                width:300px;
+                margin:100px auto;
+                background:#f09;
+                overflow:auto;
+                /*overflow:hidden;*/
+            }
+            #scrollBox #con1,#con2{
+                width:280px;
+                float:left;
+            }
+            #scrollBox li{
+                font-size: 16px;
+                line-height:2;
+                text-align:center;
+            }
+        </style>        
+    </head>
+ <body>
+        <!--div-->
+    <div id="scrollBox">
+        <ul id="con1">
+            <li>我是测试内容1！！</li>
+            <li>我是测试内容2！！</li>
+            <li>我是测试内容3！！</li>
+            <li>我是测试内容4！！</li>
+            <li>我是测试内容5！！</li>
+            <li>我是测试内容6！！</li>
+            <li>我是测试内容7！！</li>
+            <li>我是测试内容8！！</li>
+            <li>我是测试内容9！！</li>
+        </ul>
+        <ul id="con2"></ul>
+    </div>
+    <script type="text/javascript">          
+        /*
+            原理：利用控制父层滚动条移动实现
+            关键点：如何做到无缝衔接的？
+            con2的作用：
+                循环滚动不断 => 底部接一段相同的文本（起到衔接作用），同时产生了副作用，改变了原来的scrollTop的高度（这里可以看成正向的对原来环境带来的影响）
+                // 为解决一个问题，你引入了新的东西，新的东西改或许恰好改变了原来的环境，可能是好处也可能是坏处，如在这个例子中，算是正向副作用，一些之前需要解决的问题（滚动条高度不够的问题）也不需要解决了
+                
+         */
+        var area = document.getElementById('scrollBox');
+        var con1 = document.getElementById('con1');
+        function isNeedScroll () {
+            // 当内容区域小于包裹层时，无需滚动；
+            if (con1.offsetHeight <= area.offsetHeight) {
+                return false
+            } else {
+                return true
+            }
+        }
+        if (isNeedScroll()) {
+            function scrollUp () {
+                var con2 = document.getElementById('con2');
+                con2.innerHTML = con1.innerHTML;
+                // console.log('area.scrollTop', area.scrollTop)
+                // 无缝衔接，循环滚动 
+                // 其中，con2中的尾部包裹层高度的内容，用户一直没有看到过
+                if (area.scrollTop >= con1.offsetHeight) {
+                    // 这个临界点，是怎么思考的？
+                    // 处于该条件时，是怎么想到让scrollTop = 0呢？
+                    area.scrollTop = 0;
+                } else {
+                    area.scrollTop++
+                }
+            }                
+            var time = 50;
+            var mytimer = setInterval(scrollUp,time);
+            area.onmouseover = function(){
+                clearInterval(mytimer);
+            }
+            area.onmouseout = function(){
+                mytimer=setInterval(scrollUp,time);
+            }
+        }
+        
+    </script>
+ </body>
+ 
+</html>
